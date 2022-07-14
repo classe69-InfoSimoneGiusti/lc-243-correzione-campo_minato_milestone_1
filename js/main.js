@@ -1,5 +1,6 @@
 const playDom = document.getElementById('play');
 
+// il campo di gioco si rigenera cliccando sul pulsante 'play'
 playDom.addEventListener('click', startGame );
 
 function startGame() {
@@ -11,7 +12,7 @@ function startGame() {
 
     switch (difficult) {
         case 1:
-        default:
+        default: //cosi se il nostro giocatore "forza" il value della select, il programma propone il livello di difficoltà semplice
             cellTotal = 100;
             break;
         case 2: 
@@ -22,6 +23,7 @@ function startGame() {
             break;
     }
 
+    //calcolo quante celle per lato a partire dalle celle totali grazie alla radice quadrata
     cellPerSide = Math.sqrt(cellTotal);
 
     generatePlayground();
@@ -29,6 +31,8 @@ function startGame() {
     function generatePlayground() {
         // prendo l'elemento principale che rappresenta la griglia
         const gridDom = document.getElementById('grid');
+
+        // Reset generale per il contenitore interno della grid
         gridDom.innerHTML = '';
 
         for (let i = 1; i <= cellTotal; i++) {
